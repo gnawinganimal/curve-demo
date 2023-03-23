@@ -25,6 +25,10 @@ impl<C: Curve + Clone> Spline<C> {
     }
 
     pub fn get(&self, u: f32) -> Option<Vec2> {
+       if u > self.len() {
+            return None;
+        }
+
         if u == self.len() {
             return self.last()
         }
